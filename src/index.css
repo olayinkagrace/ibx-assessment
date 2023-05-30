@@ -24,6 +24,16 @@ header a:hover {
   color: white;
 
 }
-section {
-  padding: 20px;
+.footer {
+
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+.footer-input {
+  border-radius: 5px;
+ width: 60%;
+  padding: 4px;
 }
