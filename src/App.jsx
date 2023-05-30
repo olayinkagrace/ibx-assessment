@@ -1,19 +1,28 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import Home from './screens/Home';
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route
+} from "react-router-dom";
+import Home from "./screens/Home";
+import Layout from "./components/Layout";
+import Features from "./screens/Features";
+import NotFound from "./screens/NotFound";
 
 function App() {
-
-
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="features" element={<Features />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    )
   )
+  return (
+  <RouterProvider router={router} />
+  );
 }
 
-export default App
+export default App;

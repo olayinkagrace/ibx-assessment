@@ -1,1 +1,29 @@
+header{
+  padding: 20px;
+}
+header a {
+  text-decoration: none;
+  font-weight: 500;
+  color: white;
+  font-size: 18px;
+}
+header a:hover {
+  color: orangered;
+  text-decoration: underline;
+}
+.logo {
+  font-size: 20px;
+}
+.header-btn{
+  background-color: orangered;
+}
+.header-btn:hover {
+  background-color: orangered;
+}
+.header-search{
+  color: white;
 
+}
+section {
+  padding: 20px;
+}
