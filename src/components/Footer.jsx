@@ -4,10 +4,10 @@ function Footer() {
       <section className='footer bg-primary container'>
         <div>
           <div className='row py-5'>
-            <div className='col'>
+            <div className='col mb-3'>
               <h1>Sign Up for Our Newsletters</h1>
             </div>
-            <div className='col pt-2'>
+            <div className='col pt-2 mb-3'>
               {" "}
               <p className='text-start'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum a

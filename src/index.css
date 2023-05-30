@@ -24,6 +24,36 @@ header a:hover {
   color: white;
 
 }
+.active {
+margin-left: 40px;
+}
+.active-nav{
+  left:0
+}
+.site-container {
+  transition: 0.4s;
+}
+.sidebar-navbar {
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: black;
+  transition: 0.5;
+}
+
+/* newscomponent */
+
+.news-component{
+  max-width: 300px;
+  padding: 10px;
+}
+.news-title {
+  width:100%
+}
+
+
+/* footer */
 .footer {
 
   left: 0;
