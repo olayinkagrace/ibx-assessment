@@ -1,7 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 import { FaRegNewspaper, FaSearch } from "react-icons/fa";
 
-
 function NavComponent() {
   const activeStyles = {
     fontWeight: "bold",
@@ -11,7 +10,7 @@ function NavComponent() {
 
   return (
     <>
-      <header className='d-flex flex-wrap justify-content-between bg-primary align-items-center'>
+      <header className='d-flex flex-wrap justify-content-between  align-items-center'>
         <Link className='logo' to='/'>
           <FaRegNewspaper />
         </Link>

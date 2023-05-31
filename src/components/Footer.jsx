@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <>
-      <section className='footer bg-primary container'>
+      <section className='footer container'>
         <div>
           <div className='row py-5'>
             <div className='col mb-3'>

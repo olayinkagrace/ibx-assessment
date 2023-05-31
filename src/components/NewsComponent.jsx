@@ -1,23 +1,43 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import {Link} from 'react-router-dom'
+import pics from "../assets/pic.jpg";
+import TextTruncate from "react-text-truncate";
+import { FaClock, FaEllipsisV } from "react-icons/fa";
 
-function NewsComponent({ newsItem }) {
+function NewsComponent({newsItem}) {
   return (
-    <div className='m-auto news-component'>
+    <div className='m-auto news-component my-4'>
       <div>
-        <img src={newsItem.urlToImage} alt='picture' width='100%' />
+        <img src={newsItem.urlToImage} alt='picture' width='100%' className='mb-2' />
         {/* <small>Categories</small> */}
       </div>
-
       <div>
-        <h3 className='news-title'>{newsItem.title}</h3>
+        <TextTruncate
+          className='news-title'
+          line={2}
+          element='h5'
+          truncateText='…'
+          text={newsItem.title}
+        />
+        <TextTruncate
+          line={2}
+          element='p'
+          truncateText='…'
+          text={newsItem.description}
+          textTruncateChild={<a href='#'>Read on</a>}
+        />
         <p className='news-author'>{newsItem.author}</p>
-        <p className='news-description'>{newsItem.description}...<a href={newsItem.url}> Read more</a> </p>
-        <p className='news-time'>
-          {formatDistanceToNow(new Date(newsItem.publishedAt), {
-            addSuffix: true,
-          })}
-        </p>
+        <p className='news-author'>{newsItem.source.name}</p>
+        <div className='d-flex justify-content-between align-items-center'>
+          <div className='d-flex '>
+            <FaClock className='clock' color='orangered' />
+            <small className='news-time'>
+              {formatDistanceToNow(new Date(newsItem.publishedAt), {
+                addSuffix: true,
+              })}
+            </small>
+          </div>
+          <FaEllipsisV />
+        </div>
       </div>
     </div>
   );

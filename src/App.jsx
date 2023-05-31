@@ -9,6 +9,7 @@ import Home from "./screens/Home";
 import Layout from "./components/Layout";
 import Features from "./screens/Features";
 import NotFound from "./screens/NotFound";
+import NewsDetails from "./screens/NewsDetails";
 
 function App() {
   const router = createBrowserRouter(
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="features" element={<Features />} />
+        <Route path="news" element={<NewsDetails />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )
