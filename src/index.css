@@ -137,3 +137,31 @@ div.category {
   color: white;
   background-color: #2b2eff;
 }
+
+/* login */
+
+.div_password{
+  box-sizing: border-box;
+}
+.input-email {
+  width: 60%;
+  border: 0;
+  outline: none;
+}
+.buton{
+  background-color:orangered;
+  color: white;
+  border: none;
+  font-weight: 400;
+}
+.login {
+  height: 700px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(167, 162, 157);
+}
+@media screen and (max-width: 600px) {
+  body{
+    background-color: blue;
+  }
+}

@@ -12,7 +12,7 @@ function Home() {
 
   const fetchData = () => {
     fetch(
-      "https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=c0d787c3b843412eaaca89c28f6fc0ac"
+      "https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=c0d787c3b843412eaaca89c28f6fc0ac"
     )
       .then((response) => {
         return response.json();
