@@ -18,9 +18,8 @@ import ErrorMessage from "./components/ErrorMessage";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route>
-        <Route path='login' element={<Login />} />
-        <Route path='/signup' element={<SignUp />} />
+    
+        
         <Route path='/' element={<Layout />}>
           <Route
             index
@@ -29,10 +28,12 @@ function App() {
             errorElement={<ErrorMessage />}
           />
           <Route path='features' element={<Features />} />
-          <Route path=':title' element={<NewsDetails />} />
+          <Route path='news/:id' element={<NewsDetails />} />
+          <Route path='login' element={<Login />} />
+        <Route path='signup' element={<SignUp />} />
           <Route path='*' element={<NotFound />} />
         </Route>
-      </Route>
+      
     )
   );
   return <RouterProvider router={router} />;

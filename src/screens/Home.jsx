@@ -8,6 +8,7 @@ import NewsComponent from "../components/NewsComponent";
 import {useState } from "react";
 import ReactPaginate from "react-paginate";
 import { getNews } from "../api";
+import BodyComponent from "../components/BodyComponent";
 
 export function loader() {
   return  getNews() 
@@ -34,7 +35,7 @@ function Home() {
       return (
         <Link
           className='text-decoration-none'
-          to={`${newsItem.title}`}
+          to={`news/${newsItem.title}`}
           key={newsItem.title}
         >
           <div className='text-decoration-none'>
@@ -63,25 +64,12 @@ function Home() {
 
   return (
     <section>
-      <Link to='news'>New</Link>
-      <div className='category'>
+      <div className='category mt-2'>
         <button
           className='category-btn'
           onClick={() => handleFilterChange("source.name", null)}
         >
           All News
-        </button>
-        <button
-          className='category-btn'
-          onClick={() => handleFilterChange("source.name", "nbc news")}
-        >
-          NBC News
-        </button>
-        <button
-          className='category-btn'
-          onClick={() => handleFilterChange("source.name", "bbc news")}
-        >
-          BBC News
         </button>
         <button
           className='category-btn'
@@ -106,6 +94,18 @@ function Home() {
           onClick={() => handleFilterChange("source.name", "the guardian")}
         >
           The Guardian
+        </button>
+        <button
+          className='category-btn'
+          onClick={() => handleFilterChange("source.name", "nbc news")}
+        >
+          NBC News
+        </button>
+        <button
+          className='category-btn'
+          onClick={() => handleFilterChange("source.name", "bbc news")}
+        >
+          BBC News
         </button>
         <button
           className='category-btn'
@@ -276,6 +276,7 @@ function Home() {
           </div>
         </div>
       )}
+      <BodyComponent />
     </section>
   );
 }

@@ -12,6 +12,7 @@ function NavComponent() {
   return (
     <>
       <header>
+        <nav className='d-flex flex-wrap justify-content-between align-items-center'>
         <button
           className='btn btn-secondary menuIcon'
           type='button'
@@ -43,63 +44,64 @@ function NavComponent() {
           </div>
           <div className='offcanvas-body'>
            
-            <Link className="text-dark fw-bold"><p>Features</p></Link>
-            <Link className="text-dark fw-bold"><p>Shop</p></Link>
-            <Link className="text-dark fw-bold"><p>Gallery</p></Link>
-            <Link className="text-dark fw-bold"><p>Blog</p></Link>
-            <Link className="text-dark fw-bold"><p>About</p></Link>
-            <Link className="text-dark fw-bold"><p>Contact</p></Link>
+            <Link to='/' className="text-dark fw-bold"><p>Home</p></Link>
+            <Link to='features' className="text-dark fw-bold"><p>Features</p></Link>
+            <Link to='shop' className="text-dark fw-bold"><p>Shop</p></Link>
+            <Link to='gallery' className="text-dark fw-bold"><p>Gallery</p></Link>
+            <Link to='blog' className="text-dark fw-bold"><p>Blog</p></Link>
+            <Link to='about' className="text-dark fw-bold"><p>About</p></Link>
+            <Link to='contact' className="text-dark fw-bold"><p>Contact</p></Link>
+            <Link to='login' className="text-dark fw-bold"><p>Log In</p></Link>
           </div>
         </div>
-        <nav className='d-flex flex-wrap justify-content-between theHeader align-items-center'>
-          <Link className='logo' to='/'>
-            <FaRegNewspaper />
+          <Link className='logo theHeader ' to='/'>
+            NewsLand<FaRegNewspaper />
           </Link>
           <NavLink
             to='/'
-            className='ms-5'
+            className='ms-5 theHeader'
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Home
           </NavLink>
-          <NavLink
+          <NavLink  className='theHeader'
             to='features'
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Features
           </NavLink>
-          <NavLink
+          <NavLink className='theHeader'
             to='shop'
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Shop
           </NavLink>
-          <NavLink
+          <NavLink className='theHeader'
             to='gallery'
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Gallery
           </NavLink>
-          <NavLink
+          <NavLink className='theHeader'
             to='blog'
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Blog
           </NavLink>
-          <NavLink
+          <NavLink className='theHeader'
             to='about'
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             About
           </NavLink>
-          <NavLink
+          <NavLink className='theHeader'
             to='contact'
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Contact
           </NavLink>
-          <FaSearch className='header-search ms-5' />
-          <button className='btn text-light header-btn'>Subscribe</button>
+          <FaSearch className='header-search ms-5 theHeader' />
+          <button className='btn text-light btn-small header-btn theHeader'>Subscribe</button>
         </nav>
       </header>
     </>

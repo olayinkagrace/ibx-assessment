@@ -1,9 +1,8 @@
 import {
   FaUser,
   FaLock,
-  FaFingerprint,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 function Login() {
     const navigate = useNavigate()
@@ -34,16 +33,16 @@ function Login() {
                 className='input-email bg-dark input-email text-light'
                
               />
-              <FaFingerprint className='m-2 float-end' />
+              
             </div>
             <button className='buton w-100 p-2' onClick={handleClick}>
               Login
             </button>
           </form>
-          <div className='d-flex justify-content-between my-4'>
-            <p className='par'>Sign Up</p>
-            <p className='par'>Forget User ID/ Password</p>
-            <p className='par'>Get Help</p>
+          <div className='d-flex flex-wrap justify-content-center my-4'>
+            <Link className="text-light" to='/signup'><p className='m-3'>Sign Up</p></Link>
+            <Link className="text-light" to='forgetpassword'><p className='m-3'>Forget User ID/ Password</p></Link>
+            <Link className="text-light" to='help'><p className='m-3'>Get Help</p></Link>
           </div>
           <div className='d-flex justify-content-between align-items-center'>
            
