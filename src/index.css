@@ -5,9 +5,8 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 header {
-  padding: 20px;
-  background:
-  linear-gradient(rgb(51, 50, 51) , rgb(188, 186, 186), black);
+  padding: 10px;
+  background: linear-gradient(rgb(51, 50, 51), rgb(188, 186, 186), black);
   background-blend-mode: screen, difference, lighten;
 }
 header a {
@@ -49,8 +48,8 @@ header a:hover {
   background-color: black;
   transition: 0.5;
 }
-div.category{
-  background-color: rgb(23, 21, 21) ;
+div.category {
+  background-color: rgb(23, 21, 21);
   overflow: auto;
   white-space: nowrap;
 }
@@ -62,7 +61,7 @@ div.category{
   border-color: orangered;
   margin: 10px;
 }
-.category-btn:focus-within{
+.category-btn:focus-within {
   color: orangered;
   border-color: white;
   font-weight: 500;
@@ -74,6 +73,7 @@ div.category{
   max-width: 300px;
   padding: 10px;
   box-shadow: 1px 1px 1px 2px rgb(207, 205, 205);
+  color: black;
 }
 .news-title {
   width: 100%;
@@ -85,16 +85,14 @@ div.category{
 
 /* newsdetails */
 
-.new-details{
+.new-details {
   max-width: 700px;
 }
 .new-details-img {
   max-height: 500px;
   align-self: center;
 }
-.comment-btn
-{
-
+.comment-btn {
 }
 
 /* footer */
@@ -110,4 +108,32 @@ div.category{
   border-radius: 5px;
   width: 60%;
   padding: 4px;
+}
+
+/* pagination */
+.paginationButtons {
+  width: 80%;
+  height: 40px;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationButtons a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #2b2eff;
+  color: #2b2eff;
+  cursor: pointer;
+}
+
+.paginationButtons a:hover {
+  color: white;
+  background-color: #2b2eff;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: #2b2eff;
 }

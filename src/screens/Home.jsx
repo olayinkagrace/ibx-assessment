@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import NewsComponent from "../components/NewsComponent";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 
 function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [news, setNews] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const fetchData = () => {
     fetch(
-      "https://newsapi.org/v2/top-headlines?country=us&pageSize=30&apiKey=c0d787c3b843412eaaca89c28f6fc0ac"
+      "https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=c0d787c3b843412eaaca89c28f6fc0ac"
     )
       .then((response) => {
         return response.json();
@@ -26,21 +28,35 @@ function Home() {
 
   const categoryFilter = searchParams.get("source.name");
   const displayNews = categoryFilter
-    ? news.filter(char => char.source.name.toLowerCase() === categoryFilter)
+    ? news.filter((char) => char.source.name.toLowerCase() === categoryFilter)
     : news;
 
-  console.log(news);
-  console.log(categoryFilter);
+  const newsPerPage = 10;
+  const pagesVisited = pageNumber * newsPerPage;
+
+  const showNews = displayNews
+    .slice(pagesVisited, pagesVisited + newsPerPage)
+    .map((newsItem) => {
+      return (
+        <Link to={`${newsItem.title}`} key={newsItem.title}>
+          <div className='text-decoration-none'>
+            <NewsComponent newsItem={newsItem} />
+          </div>
+        </Link>
+      );
+    });
+
+  const pageCount = Math.ceil(news.length / newsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
   return (
     <section>
       <Link to='news'>New</Link>
       <div className='category'>
-        
-        <button
-          className='category-btn'
-          onClick={() => setSearchParams({})}
-        >
-          Home
+        <button className='category-btn' onClick={() => setSearchParams({})}>
+          All News
         </button>
         <button
           className='category-btn'
@@ -54,7 +70,7 @@ function Home() {
         >
           BBC News
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=cnn")}
         >
@@ -66,43 +82,43 @@ function Home() {
         >
           CBS News
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=usa today")}
         >
-         USA Today
+          USA Today
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=the guardian")}
         >
-         The Guardian
+          The Guardian
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=espn")}
         >
           ESPN
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=cnbc")}
         >
           CNBC
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=spacenews")}
         >
           Space News
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=the verge")}
         >
           The Verge
         </button>
-         <button
+        <button
           className='category-btn'
           onClick={() => setSearchParams("?source.name=al.com")}
         >
@@ -123,12 +139,23 @@ function Home() {
       </div>
       <h1>Latest News</h1>
       <div className='d-flex flex-wrap container align-items-center justify-content-center container'>
-        {news &&
-          displayNews.map((newsItem) => (
-            <Link to={`news/:${newsItem.title}`} key={newsItem.title}>
-              <NewsComponent newsItem={newsItem} />
-            </Link>
-          ))}
+        {news && (
+          <div>
+            {showNews}
+
+            <ReactPaginate
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName='paginationButtons'
+              previousLinkClassName='prevButton'
+              nextLinkClassName='nextButton'
+              disabledClassName='paginationDisabled'
+              activeClassName='paginationActive'
+            />
+          </div>
+        )}
       </div>
     </section>
   );

@@ -5,16 +5,15 @@ import { FaClock, FaEllipsisV } from "react-icons/fa";
 
 function NewsComponent({newsItem}) {
   return (
-    <div className='m-auto news-component my-4'>
-      <div>
-        <img src={newsItem.urlToImage} alt='picture' width='100%' className='mb-2' />
-        {/* <small>Categories</small> */}
+    <div className='m-auto news-component my-4 h-auto'>
+      <div className="h-50">
+        <img src={newsItem.urlToImage} alt='picture' width='100%' className='mb-2'  />
       </div>
       <div>
         <TextTruncate
-          className='news-title'
+          className='news-title text-decoration-none'
           line={2}
-          element='h5'
+          element='h6'
           truncateText='…'
           text={newsItem.title}
         />
@@ -25,8 +24,7 @@ function NewsComponent({newsItem}) {
           text={newsItem.description}
           textTruncateChild={<a href='#'>Read on</a>}
         />
-        <p className='news-author'>{newsItem.author}</p>
-        <p className='news-author'>{newsItem.source.name}</p>
+        <p className='news-author fw-semibold'>{newsItem.author}</p>
         <div className='d-flex justify-content-between align-items-center'>
           <div className='d-flex '>
             <FaClock className='clock' color='orangered' />
