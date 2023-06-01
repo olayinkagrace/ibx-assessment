@@ -1,35 +1,29 @@
 // import { Link } from "react-router-dom";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useSearchParams,
+  useLoaderData
+} from "react-router-dom";
 import NewsComponent from "../components/NewsComponent";
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import ReactPaginate from "react-paginate";
+import { getNews } from "../api";
+
+export function loader() {
+  return  getNews() 
+}
 
 function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [news, setNews] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const fetchData = () => {
-    fetch(
-      "https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=c0d787c3b843412eaaca89c28f6fc0ac"
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setNews(data.articles);
-      });
-  };
+  const data = useLoaderData();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const categoryFilter = searchParams.get("source.name");
   const displayNews = categoryFilter
-    ? news.filter((char) => char.source.name.toLowerCase() === categoryFilter)
-    : news;
+    ? data.filter((char) => char.source.name.toLowerCase() === categoryFilter)
+    : data;
 
   const newsPerPage = 10;
   const pagesVisited = pageNumber * newsPerPage;
@@ -50,7 +44,7 @@ function Home() {
       );
     });
 
-  const pageCount = Math.ceil(news.length / newsPerPage);
+  const pageCount = Math.ceil(data.length / newsPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -262,7 +256,7 @@ function Home() {
         </div>
       </div>
 
-      {news && (
+      {data && (
         <div className='align-content-center'>
           <div className='d-flex flex-wrap container justify-content-center'>
             {showNews}
