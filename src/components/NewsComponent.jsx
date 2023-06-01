@@ -1,13 +1,13 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import pics from "../assets/pic.jpg";
+import pics from "../assets/news.png";
 import TextTruncate from "react-text-truncate";
 import { FaClock, FaEllipsisV } from "react-icons/fa";
 
 function NewsComponent({newsItem}) {
   return (
-    <div className='m-auto news-component my-4 h-auto'>
+    <div className='news-component m-4'>
       <div className="h-50">
-        <img src={newsItem.urlToImage} alt='picture' width='100%' className='mb-2'  />
+        <img src={newsItem.urlToImage ? newsItem.urlToImage : pics} alt='picture' width='100%' className='mb-2 news-img'  />
       </div>
       <div>
         <TextTruncate
@@ -22,9 +22,9 @@ function NewsComponent({newsItem}) {
           element='p'
           truncateText='…'
           text={newsItem.description}
-          textTruncateChild={<a href='#'>Read on</a>}
+          textTruncateChild={<a href='#'>Read more</a>}
         />
-        <p className='news-author fw-semibold'>{newsItem.author}</p>
+        <p className='news-author fw-semibold'>Authour: {newsItem.author}</p>
         <div className='d-flex justify-content-between align-items-center'>
           <div className='d-flex '>
             <FaClock className='clock' color='orangered' />

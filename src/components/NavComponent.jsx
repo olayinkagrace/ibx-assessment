@@ -1,6 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 import { FaRegNewspaper, FaSearch, FaAlignJustify } from "react-icons/fa";
-import { useState } from "react";
+
 
 function NavComponent() {
   const activeStyles = {

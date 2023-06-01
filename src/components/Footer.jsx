@@ -2,7 +2,6 @@ function Footer() {
   return (
     <>
       <section className='footer container'>
-        <div>
           <div className='row py-5'>
             <div className='col mb-3'>
               <h1>Sign Up for Our Newsletters</h1>
@@ -17,7 +16,7 @@ function Footer() {
             </div>
             <div>
               <input
-                className='footer-input'
+                className='footer-input mb-2'
                 type='email'
                 placeholder='Input your email address here'
               />
@@ -26,10 +25,9 @@ function Footer() {
               </button>
             </div>
           </div>
-        </div>
       </section>
-      <div className='row m-5  container'>
-        <div className='col-3'>
+      <div className='d-flex flex-wrap justify-content-between container py-4'>
+        <div>
           <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod atque
           molestiae perferendis facere nisi rem, saepe cum. Minima dolor
@@ -38,7 +36,7 @@ function Footer() {
           </p>
          
         </div>
-        <div className='col-3'>
+        <div>
           <p className='fw-bold'>Categories</p>
           <p >International</p>
           <p>Regional</p>
@@ -47,7 +45,7 @@ function Footer() {
           <p>Sport</p>
           <p>Health</p>
         </div>
-        <div className='col-3'>
+        <div>
           <p className='fw-bold'>Company</p>
           <p>About Us</p>
           <p>Privacy Policy</p>
@@ -55,7 +53,7 @@ function Footer() {
           <p>Carrers</p>
           <p>Contact Us</p>
         </div>
-        <div className='col-3'>
+        <div>
           <p className='fw-bold'>Social Media</p>
           <p>Youtube</p>
           <p>Instagram</p>
@@ -64,6 +62,7 @@ function Footer() {
           <p>Twitter</p>
         </div>
       </div>
+      <p className='text-center text-secondary'><span>&copy;</span>Newsland</p>
     </>
   );
 }
