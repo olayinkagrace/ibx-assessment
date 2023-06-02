@@ -1,17 +1,13 @@
 // import { Link } from "react-router-dom";
-import {
-  Link,
-  useSearchParams,
-  useLoaderData
-} from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import NewsComponent from "../components/NewsComponent";
-import {useState } from "react";
+import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { getNews } from "../api";
 import BodyComponent from "../components/BodyComponent";
 
 export function loader() {
-  return  getNews() 
+  return getNews();
 }
 
 function Home() {
@@ -19,7 +15,6 @@ function Home() {
   const [pageNumber, setPageNumber] = useState(0);
 
   const data = useLoaderData();
-
 
   const categoryFilter = searchParams.get("source.name");
   const displayNews = categoryFilter
@@ -35,7 +30,7 @@ function Home() {
       return (
         <Link
           className='text-decoration-none'
-          to={`news/${newsItem.title}`}
+          to={`news/:${newsItem.title}`}
           key={newsItem.title}
         >
           <div className='text-decoration-none'>

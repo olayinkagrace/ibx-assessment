@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 function SignUp() {
   const navigate = useNavigate();
 
-  function handleClick() {
+  function handleClick(e) {
+    e.preventDefault()
     navigate("/");
   }
   return (

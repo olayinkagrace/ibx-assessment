@@ -1,5 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 import { FaRegNewspaper, FaSearch, FaAlignJustify } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 
 function NavComponent() {
@@ -8,7 +9,7 @@ function NavComponent() {
     color: "orangered",
     textDecoration: "underline",
   };
-
+  const source = useSelector((state) => state.user);
   return (
     <>
       <header>
@@ -33,7 +34,7 @@ function NavComponent() {
         >
           <div className='offcanvas-header'>
             <h5 className='offcanvas-title fw-bolder ' id='offcanvasScrollingLabel'>
-              Welcome
+              Welcome {source.email}
             </h5>
             <button
               type='button'

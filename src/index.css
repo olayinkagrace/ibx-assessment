@@ -87,7 +87,7 @@ div.category {
 .news-component {
   max-width: 300px;
   padding: 10px;
-  box-shadow: 1px 1px 1px 2px rgb(207, 205, 205);
+  box-shadow: 1px 2px 2px 2px rgb(168, 165, 165);
   color: black;
 }
 .news-title {
@@ -168,6 +168,7 @@ div.category {
   border: 0;
   outline: none;
 }
+
 .buton{
   background-color:orangered;
   color: white;

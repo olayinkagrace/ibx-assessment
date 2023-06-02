@@ -1,134 +1,122 @@
 // import { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
-import pic from "../assets/pic.jpg";
+import { useState } from "react";
+import pics from "../assets/news.png";
 import { useParams } from "react-router-dom";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { format } from "date-fns";
 
 function NewsDetails() {
   const params = useParams();
   const { title } = params;
-
-  const [theNews, setTheNews] = useState("");
   const [comment, setComment] = useState(false);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [input, setInput] = useState("");
-  const [error, seterror] = useState(null);
+  const [website, setWebsite] = useState("");
 
-  const fetchNews = () => {
-    fetch(
-      `https://newsapi.org/v2/top-headlines?qsearchIn=title=${title}}&apiKey=c0d787c3b843412eaaca89c28f6fc0ac`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTheNews(data.articles);
-      });
-  };
+  const slice = title.slice(1);
 
-  useEffect(() => {
-    fetchNews();
-  }, [title]);
+  const allNews = JSON.parse(localStorage.getItem("articles"));
+  const theNews = allNews.find((obj) => {
+    return obj.title === slice;
+  });
 
   const handleClick = () => {
     setComment(true);
   };
 
-  const handleChange = (e) => {
-    e.preventDefault()
-  };
-  console.log(theNews);
   return (
     <section className='align-items-center container new-details pt-3'>
-      {title}
-      <h3 className='fw-bold'>{title}</h3>
-      <p>
-        Published 14 hours ago on May 30, 2023{" "}
-        <p>
-          By <strong>Lorem, ipsum.</strong>
-        </p>
+      <h3 className='fw-bold mt-3'>{theNews.title}</h3>
+      <p className='news-time fs-5 mt-3'>
+        Published
+        {formatDistanceToNow(new Date(theNews.publishedAt), {
+          addSuffix: true,
+        })}{" "}
+        {format(new Date(theNews.publishedAt), "do MMM Y")}
+        <br />
+        By <strong>{theNews.author}</strong>{" "}
       </p>
 
       <div>
-        <img src={pic} alt='picture' width='100%' className='new-details-img' />
+        <img
+          src={theNews.urlToImage ? theNews.urlToImage : pics}
+          alt='picture'
+          width='100%'
+          className='new-details-img'
+        />
       </div>
       <div className='py-3'>
-        <p className='fw-semi-bold fs-5'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora,
-          explicabo amet rem, aperiam in blanditiis minima ducimus dolor aut,
-          est accusamus vero. Voluptate, optio. Cupiditate quae voluptatibus
-          odit eligendi, sint recusandae quibusdam quos sit earum sapiente
-          pariatur, suscipit nesciunt reprehenderit culpa odio iste ipsam
-          reiciendis quaerat in perferendis maxime hic obcaecati! Ex a sapiente
-          optio dicta? Saepe sunt consequuntur veniam ut aliquam accusamus
-          molestiae minus numquam ab vel? Laudantium, praesentium! Nihil sint
-          numquam labore earum! Veniam similique cumque vel doloribus
-          repudiandae ipsa nesciunt at architecto tenetur. Aspernatur quas
-          commodi fugit ex modi sint doloribus accusantium voluptates natus?
-          Ullam, possimus ipsa!
-        </p>
+        <p className='fw-semi-bold fs-5'>{theNews.description}</p>
       </div>
+      <a className="fw-bold fs-6" href={theNews.url}>Read more here...</a>
       {!comment && (
         <div
           className=' d-flex justify-content-center align-items-center'
           onClick={handleClick}
         >
-          <button className='comment-btn mb-3 align'>
+          <button className='comment-btn my-3 align'>
             Click here to comment
           </button>
         </div>
       )}
       {comment && (
         <div>
-          <p className="fw-semibold">Your email address wii not be published.</p>
+          <p className='fw-semibold mt-3'>
+            Your email address will not be published.
+          </p>
           <form className='my-3 text-secondary'>
-        <label htmlFor='Name'>Comment</label>
-        <textarea
-          className='form-control'
-          name='Comment'
-          id=''
-          cols='70'
-          rows='6'
-        />
-        <label htmlFor='Name'>Name</label>
-        <input
-          className='form-control'
-          id='name'
-          type='text'
-          value={name}
-          onChange={handleChange}
-        />
-        <label htmlFor='email'>Email</label>
-        <input
-          className='form-control'
-          type='email'
-          value={email}
-          onChange={handleChange}
-        />
-        <label htmlFor=''>Website</label>
-        <input
-          className='form-control'
-          type='email'
-          value={email}
-          onChange={handleChange}
-        />
-        <div>
-        <input type='checkbox' />
-        <label className="ms-2 mt-2">
-          Save my name, email and website in this broweser for the next time I
-          comment
-        </label>
-        </div>
-        <div>
-        <input type='checkbox' />
-        <label className="ms-2 mb-2">
-          Yes, add me to your mailing list
-        </label>
-        </div>
-        <button className="margin-auto">Post a comment</button>
-      </form>
-      {error && <h2 style={{ color: "red" }}>{error}</h2>}
+            <label htmlFor='Name'>Comment</label>
+            <textarea
+              className='form-control'
+              name='Comment'
+              id=''
+              required={true}
+              value={input}
+              cols='70'
+              rows='6'
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <label htmlFor='Name'>Name</label>
+            <input
+              className='form-control'
+              id='name'
+              type='text'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label htmlFor='email'>Email</label>
+            <input
+              className='form-control'
+              type='email'
+              required={true}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor=''>Website</label>
+            <input
+              className='form-control'
+              type='text'
+              required={true}
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+            <div>
+              <input type='checkbox' />
+              <label className='ms-2 mt-2'>
+                Save my details in this broweser for the next time I comment
+              </label>
+            </div>
+            <div>
+              <input type='checkbox' />
+              <label className='ms-2 mb-2'>
+                Yes, add me to your mailing list
+              </label>
+            </div>
+            <div className='text-center justify-content-center align-items-center'>
+              <button className='margin-auto mt-3'>Post a comment</button>
+            </div>
+          </form>
         </div>
       )}
     </section>

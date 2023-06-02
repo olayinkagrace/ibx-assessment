@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Home, { loader as newsLoader } from "./screens/Home";
 import Layout from "./components/Layout";
-import Features from "./screens/Features";
 import NotFound from "./screens/NotFound";
 import NewsDetails from "./screens/NewsDetails";
 import Login from "./screens/Login";
@@ -27,8 +26,7 @@ function App() {
             loader={newsLoader}
             errorElement={<ErrorMessage />}
           />
-          <Route path='features' element={<Features />} />
-          <Route path='news/:id' element={<NewsDetails />} />
+          <Route path='news/:title' element={<NewsDetails />} />
           <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
           <Route path='*' element={<NotFound />} />
