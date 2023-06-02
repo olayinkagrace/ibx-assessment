@@ -17,11 +17,11 @@ function BodyComponent() {
             </div>
             <div>
               <input
-                className='footer-input mb-2'
+                className='footer-input mb-2 py-2'
                 type='email'
                 placeholder='Input your email address here'
               />
-              <button className='btn header-btn text-light ms-2'>
+              <button className='btn header-btn text-light ms-2 py-2'>
                 Subscribe Now
               </button>
             </div>

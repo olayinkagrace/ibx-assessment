@@ -29,13 +29,11 @@ function NewsDetails() {
     <section className='align-items-center container new-details pt-3'>
       <h3 className='fw-bold mt-3'>{theNews.title}</h3>
       <p className='news-time fs-5 mt-3'>
-        Published
-        {formatDistanceToNow(new Date(theNews.publishedAt), {
+        Published {formatDistanceToNow(new Date(theNews.publishedAt), {
           addSuffix: true,
-        })}{" "}
-        {format(new Date(theNews.publishedAt), "do MMM Y")}
+        })}, {format(new Date(theNews.publishedAt), "do MMM Y")}
         <br />
-        By <strong>{theNews.author}</strong>{" "}
+        By <strong>{theNews.author ? theNews.author : 'Anonymous'}</strong>{" "}
       </p>
 
       <div>
@@ -101,10 +99,10 @@ function NewsDetails() {
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
             />
-            <div>
+            <div className="mt-2">
               <input type='checkbox' />
-              <label className='ms-2 mt-2'>
-                Save my details in this broweser for the next time I comment
+              <label className='ms-2'>
+                Save my details in this browser
               </label>
             </div>
             <div>

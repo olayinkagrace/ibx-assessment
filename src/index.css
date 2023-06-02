@@ -182,8 +182,12 @@ div.category {
   background-color: rgb(167, 162, 157);
 }
 
+/* not found */
 .not-found-header {
   font-size: 140px;
+}
+.err-img {
+  max-height: 600px;
 }
 @media screen and (max-width: 900px) {
   .theHeader{
